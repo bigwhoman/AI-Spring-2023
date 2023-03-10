@@ -1,5 +1,5 @@
 import numpy as np
-
+# Idea got from Geeks for Geeks
 
 class CSP:
     def __init__(self, n):
@@ -48,7 +48,8 @@ class CSP:
         for row in rows:
             if not self.check_constraints(row, i):
                 domain.remove(row)
-        return len(domain) == 0
+        if len(domain) == 0 : return True
+        else : return False
 
     def assign(self, row, column):
         """
@@ -91,26 +92,22 @@ class CSP:
             if self.check_constraints(row, i):
                 rows.append(row)
         for row in rows:
+            self.number_of_iteration += 1
             self.grid[row, i] = 1
-            domainWipeOut = False
-            for point in self.getUnassignedFromConstraint(i):
+            no_remainig_domain = False
+            valid_points = []
+            for r in range(self.n):
+                for col in range(i+1, self.n):
+                    if self.grid[r,col] == 0 and self.check_constraints(r, col):
+                        valid_points.append(col)
+            for point in valid_points:
                 if self.forward_check(point):
-                    domainWipeOut = True
+                    no_remainig_domain = True
                     break
-            if not domainWipeOut:
+            if not no_remainig_domain:
                 if self._solve_problem_with_forward_check(i + 1):
                     return True
             self.grid[row, i] = 0
-        
-        
-    
-    def getUnassignedFromConstraint(self,i):
-        result = []
-        for row in range(self.n):
-            for col in range(i+1, self.n):
-                if self.grid[row,col] == 0 and self.check_constraints(row, col):
-                    result.append(col)
-        return result
     
 
     def solve_problem_with_forward_check(self):
