@@ -17,7 +17,6 @@ class CSP:
         """
         Here we check the grid horizontally, vertically and diagonally
         """
-        # if row < 15 and col < 15 and self.domain[row,col] == 0 : return False
         for i in range(col):
             if self.grid[row,i] == 1:
                 return False
@@ -36,17 +35,17 @@ class CSP:
                     
     
 
-    def forward_check(self, i):
-        """
-        After assigning a queen to ith column, we can make a forward check
-        to boost up the computing speed and prune our search tree.
-        """
-        actualDomain = self.getRowsProposition(i)
-        tempDomain = list(actualDomain)
-        for propositionRow in actualDomain:
-            if not self.check_constraints(propositionRow, i):
-                tempDomain.remove(propositionRow)
-        return len(tempDomain) == 0
+    # def forward_check(self, i):
+    #     """
+    #     After assigning a queen to ith column, we can make a forward check
+    #     to boost up the computing speed and prune our search tree.
+    #     """
+    #     actualDomain = self.getRowsProposition(i)
+    #     tempDomain = list(actualDomain)
+    #     for propositionRow in actualDomain:
+    #         if not self.check_constraints(propositionRow, i):
+    #             tempDomain.remove(propositionRow)
+    #     return len(tempDomain) == 0
 
     def assign(self, row, column):
         """
@@ -127,18 +126,18 @@ class CSP:
             self.grid[row, i] = 0
         
 
-    def fc(self,row, queen):
-        actualDomain = self.getRowsProposition(queen)
+    def fc(self,row, i):
+        actualDomain = self.getRowsProposition(i)
         tempDomain = list(actualDomain)
         for propositionRow in actualDomain:
-            if not self.check_constraints(propositionRow, queen):
+            if not self.check_constraints(propositionRow, i):
                 tempDomain.remove(propositionRow)
         return len(tempDomain) == 0
 
     def getRowsProposition(self,i):
         rows = []
         for row in range(self.n):
-            if (row, i):
+            if self.check_constraints(row, i):
                 rows.append(row)
         return rows
     
