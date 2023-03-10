@@ -35,17 +35,20 @@ class CSP:
                     
     
 
-    # def forward_check(self, i):
-    #     """
-    #     After assigning a queen to ith column, we can make a forward check
-    #     to boost up the computing speed and prune our search tree.
-    #     """
-    #     actualDomain = self.getRowsProposition(i)
-    #     tempDomain = list(actualDomain)
-    #     for propositionRow in actualDomain:
-    #         if not self.check_constraints(propositionRow, i):
-    #             tempDomain.remove(propositionRow)
-    #     return len(tempDomain) == 0
+    def forward_check(self, i):
+        """
+        After assigning a queen to ith column, we can make a forward check
+        to boost up the computing speed and prune our search tree.
+        """
+        rows = []
+        for row in range(self.n):
+            if self.check_constraints(row, i):
+                rows.append(row)
+        domain = list(rows)
+        for row in rows:
+            if not self.check_constraints(row, i):
+                domain.remove(row)
+        return len(domain) == 0
 
     def assign(self, row, column):
         """
@@ -82,42 +85,16 @@ class CSP:
         
         if i >= self.n :
             return True 
-        # rows = []
-        # for row in range(self.n):
-        #     if self.check_constraints(row, i):
-        #         rows.append(row)
 
-
-        # rowsProposition = self.getRowsProposition(i)
-
-        # for row in rowsProposition:
-        #     self.number_of_iteration += 1
-        #     self.assign(row,i)
-        #     non_remaining_domain = False
-        #     # valid_points = []
-        #     # for row in range(self.n):
-        #     #     for col in range(i+1, self.n):
-        #     #         if self.grid[row,col] == 0 and self.check_constraints(row,col):
-        #     #             valid_points.append((row,col))
-        #     for point in self.getUnassignedFromConstraint(i):
-        #         if self.forward_check(point[0]):
-        #             non_remaining_domain = True
-        #             break
-        #     if not non_remaining_domain:
-        #         if self._solve_problem_with_forward_check(i + 1):
-        #             return True
-        #     self.grid[row,i] = 0
-
-
-
-
-
-        rowsProposition = self.getRowsProposition(i)
-        for row in rowsProposition:
+        rows = []
+        for row in range(self.n):
+            if self.check_constraints(row, i):
+                rows.append(row)
+        for row in rows:
             self.grid[row, i] = 1
             domainWipeOut = False
-            for variable in self.getUnassignedFromConstraint(i):
-                if self.fc(variable[0], variable[1]):
+            for point in self.getUnassignedFromConstraint(i):
+                if self.forward_check(point):
                     domainWipeOut = True
                     break
             if not domainWipeOut:
@@ -125,28 +102,14 @@ class CSP:
                     return True
             self.grid[row, i] = 0
         
-
-    def fc(self,row, i):
-        actualDomain = self.getRowsProposition(i)
-        tempDomain = list(actualDomain)
-        for propositionRow in actualDomain:
-            if not self.check_constraints(propositionRow, i):
-                tempDomain.remove(propositionRow)
-        return len(tempDomain) == 0
-
-    def getRowsProposition(self,i):
-        rows = []
-        for row in range(self.n):
-            if self.check_constraints(row, i):
-                rows.append(row)
-        return rows
+        
     
     def getUnassignedFromConstraint(self,i):
         result = []
         for row in range(self.n):
             for col in range(i+1, self.n):
                 if self.grid[row,col] == 0 and self.check_constraints(row, col):
-                    result.append((row, col))
+                    result.append(col)
         return result
     
 
