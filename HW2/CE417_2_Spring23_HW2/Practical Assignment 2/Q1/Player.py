@@ -36,8 +36,7 @@ class MiniMaxPlayer(Player):
         return the next move (i,j) of the player based on minimax algorithm.
         """
         # Todo: implement minimax algorithm with alpha beta pruning
-        valid = BoardUtility.get_valid_locations(board)
-        value, move = minimax(board)
+        value, move = minimax(board = board, player_piece=self.piece, depth=self.depth, is_maximizing_player=True, alpha=-100_000_000, beta=100_000_000)
         return move
 
 
@@ -55,5 +54,5 @@ class MiniMaxProbPlayer(Player):
         with probability self.prob_stochastic.
         """
         # Todo: implement minimax algorithm with alpha beta pruning
-        value, move = ..., ...
+        value, move = minimax_prob(board, our_piece, enemy_piece, depth, is_maximizing_player, alpha, beta, prob)
         return move

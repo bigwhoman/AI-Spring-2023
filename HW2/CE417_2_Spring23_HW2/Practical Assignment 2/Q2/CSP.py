@@ -1,5 +1,6 @@
 import numpy as np
 # Idea got from Geeks for Geeks
+# check_constraints copied from geeks for geeks although its very easy
 
 class CSP:
     def __init__(self, n):
@@ -30,7 +31,6 @@ class CSP:
                         range(col, -1, -1)):
             if self.grid[i,j] == 1:
                 return False
-    
         return True
                     
     

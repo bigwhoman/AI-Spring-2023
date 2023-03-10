@@ -47,8 +47,23 @@ class BoardUtility:
         if BoardUtility.has_player_won(game_board, piece):
             return 100_000_000_000  # player has won the game give very large score
         if BoardUtility.has_player_won(game_board, 1 if piece == 2 else 2):
-            return -100_000_000_000  # player has lost the game give very large negative score
-        # todo score the game board based on a heuristic.
+            return -100_000_000_000
+        for i in range(3):
+            for j in range(3):
+                if game_board[i][j] == piece:
+                    if i == 1 and j == 1:
+                        score += 3
+                    elif (i == 0 or i == 2) and (j == 0 or j == 2):
+                        score += 2
+                    else:
+                        score += 1
+                elif game_board[i][j] == 1 if piece == 2 else 2:
+                    if i == 1 and j == 1:
+                        score -= 3
+                    elif (i == 0 or i == 2) and (j == 0 or j == 2):
+                        score -= 2
+                    else:
+                        score -= 1 
 
         return score
 
