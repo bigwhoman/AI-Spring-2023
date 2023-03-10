@@ -76,7 +76,8 @@ class CSP:
          In this function we should set the ith queen in ith column and call itself recursively to solve the problem
          and return solution's grid
         """
-        return self._solve_problem_with_backtrack(0)
+        self._solve_problem_with_backtrack(0)
+        return self.grid
 
     def _solve_problem_with_forward_check(self, i):
         """
@@ -115,5 +116,6 @@ class CSP:
          In this function we should set the ith queen in ith column and call itself recursively to solve the problem
          and return solution's grid
         """
-        return self._solve_problem_with_forward_check(0)
+        self._solve_problem_with_forward_check(0)
+        return self.grid
 
