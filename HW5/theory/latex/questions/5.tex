@@ -1,0 +1,37 @@
+\smalltitle{سوال 5}
+\noindent
+
+\begin{enumerate}
+    \item \phantom{text}
+          \begin{latin}        \noindent
+              \begin{tikzpicture}[shorten >=1pt, node distance=2cm, on grid, auto]
+                  \node[state] (q0') {$A$};
+                  \node[state] (q0) [right=of q0'] {$EL$};
+                  \node[state] (q1) [below=of q0'] {$MS$};
+                  \node[state] (q2) [right=of q1] {$I$};
+                  \node[state] (q3) [below=of q1] {$CT$};
+
+                  \path[->]
+                  (q0') edge [] node {} (q1)
+                  (q0') edge [] node {} (q2)
+                  (q0) edge [] node {} (q2)
+                  (q2) edge [] node {} (q3)
+                  (q1) edge [] node {} (q3)
+                %   (q0') edge [bend right] node {$\epsilon$} (q2)
+                %   (q0) edge [] node {$(b(ba)^*a\cup a(ab)^*b)$} (q1)
+                %   (q1) edge [bend left] node {$\epsilon$} (q0)
+                %   (q1) edge [] node {$\epsilon$} (q2)
+                ;
+              \end{tikzpicture}
+          \end{latin}
+      \item \phantom{text}
+      \begin{latin}
+        $P[MS = 0|CT=0,I=0] = \frac{P[MS=0,CT=0,I=0]}{P[CT=0,I=0]}=\frac{\sum_{A,EL}P[A,EL,MS=0,CT=0,I=0]}{\sum_{A,EL,MS}P[A,EL,MS,CT=0,I=0]} 
+        \\\\ 
+        = \frac{\sum_{A,EL}P[A]P[EL]P[MS=0|AL]P[I=0|A,EL]P[CT=0|MS=0,I=0]}{\sum_{A,EL,MS}P[A]P[EL]P[MS|AL]P[I=0|A,EL]P[CT=0|MS,I=0]}
+        $
+      \end{latin}
+      
+\end{enumerate}
+
+

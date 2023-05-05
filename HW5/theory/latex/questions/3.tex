@@ -1,0 +1,46 @@
+\smalltitle{سوال 3}
+\begin{enumerate}
+  \item \phantom{text}
+        \begin{latin}
+          In Rejection Sampling we would discard the samples that have the wrong evidence.\\\\
+          In this example if we get either +r or -f, the evidence is wrong, hence we should discard our sample.\\
+          In the samples below, the rejected samples are marked with an $X$\\
+          +r +e +w -m -f $ \rightarrow X$\\
+          -r -e +w -m -f $\rightarrow X$\\
+          -r +e -w +m -f $\rightarrow X$\\
+          +r -e -w +m -f $\rightarrow X$\\
+          -r -e -w -m +f $\rightarrow \checkmark$\\
+          -r +e -w -m +f $\rightarrow \checkmark$\\
+          -r -e +w -m +f $\rightarrow \checkmark$\\
+          +r -e +w +m -f $\rightarrow X$\\
+          -r -e -w +m +f $\rightarrow \checkmark$\\
+          +r -e -w +m +f $\rightarrow X$\\
+          -r +e +w -m +f $\rightarrow \checkmark$\\
+          -r +e -w -m +f $\rightarrow \checkmark$\\
+        \end{latin}
+  \item \phantom{text}
+        \begin{latin}
+          -r -e +w +m +f $\rightarrow w_1 = 0.6 * 0.15 = 0.09$\\   
+          -r -e -w +m +f $\rightarrow w_2 = 0.6 * 0.75 = 0.45$\\   
+          -r -e +w -m +f $\rightarrow w_3 = 0.6 * 0.15 = 0.09$\\   
+          -r +e -w -m +f $\rightarrow w_4 = 0.6 * 0.75 = 0.45$\\   
+          $\sum weights = 1.08 \rightarrow \frac{0.09+0.45}{1.08} = P = 0.5$
+        \end{latin}
+  \item \phantom{text}
+        \begin{latin}
+          $P[+e|-r,+f,+m,-w] = \frac{P[+e,-r,+f,+m,-w]}{P[-r,+f,+m,-w]} = \frac{P[+e,-r,+f,+m,-w]}{\sum_{e}P[e,-r,+f,+m,-w]} = \\
+            \\ \frac{P[-r]P[-w|-r]P[+e|-r]P[+m|+e,-w]P[+f|-w]}{\sum_{e}P[-r]P[-w|-r]P[e|-r]P[+m|e,-w]P[+f|-w]} = \\\\
+            \frac{P[-r]P[-w|-r]P[+e|-r]P[+m|+e,-w]P[+f|-w]}{P[-r]P[-w|-r]P[+f|-w]\sum_{e}P[e|-r]P[+m|e,-w]} = \frac{P[+e|-r]P[+m|+e,-w]}{\sum_{e}P[e|-r]P[+m|e,-w]}
+            \\\\
+            = \frac{0.6 * 0.45}{0.6 * 0.45 + 0.4 * 0.9} = 0.43
+          $
+        \end{latin}
+  \item \phantom{text}
+        \begin{latin}
+          $P[+m|-r,+f] = \frac{P[-r,+f,+m]}{P[-r,+f]} = \frac{\sum_{e,w}P[-r,+f,+m,e,w]}{\sum_{m,e,w}P[m,-r,+f,e,w]} = \\
+            \\ 
+             = \frac{\sum_{e,w}P[-r]P[w|-r]P[e|-r]P[+m|e,w]P[+f|w]}{\sum_{e,w,m}P[-r]P[w|-r]P[e|-r]P[m|e,w]P[+f|w]} = \frac{\sum_{e,w}P[w|-r]P[e|-r]P[+m|e,w]P[+f|w]}{\sum_{e,w,m}P[w|-r]P[e|-r]P[m|e,w]P[+f|w]} 
+            \\\\
+          $
+        \end{latin}
+\end{enumerate}

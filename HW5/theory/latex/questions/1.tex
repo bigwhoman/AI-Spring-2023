@@ -1,0 +1,58 @@
+\begin{latin}
+  Shoutout to Hirbod Behnam for helping me out on the questions.
+\end{latin}
+\smalltitle{سوال 1}
+
+\begin{enumerate}
+    \item \phantom{text}
+    \\
+    \begin{latin}
+      $P[p_1 | p_2,-p_3] = \frac{\sum_{p_4} P[p_1,p_2,-p_3,p_4]}{P[p_2,-p_3]} = Z * \sum_{p_4} P[p_1]P[p_2|p_1]P[-p_3|p_2]P[p_4|p_2]$
+      \\\\
+      $=Z* P[p_1]P[p_2|p_1]P[-p_3|p_2]P[+p_4|p_2] + Z*P[p_1]P[p_2|p_1]P[-p_3|p_2]P[-p_4|p_2]$ 
+      \\\\
+      $= Z*0.4 * 0.8 * (1 - 0.2) * 0.8 + Z*0.4 * 0.8 * (1-0.2) * 0.2 = Z * 0.256$
+      \\\\
+      $ Z = \frac{1}{\sum_{p_1,p_4}P[p_1,p_2,-p_3,p_4]} \rightarrow \\ \sum_{p_1,p_4}P[p_1,p_2,-p_3,p_4] = P[+p_1]P[p_2|+p_1]P[-p_3|p_2]P[+p_4|p_2] + P[+p_1]P[p_2|+p_1]P[-p_3|p_2]P[-p_4|p_2]+P[-p_1]P[p_2|-p_1]P[-p_3|p_2]P[+p_4|p_2]+P[-p_1]P[p_2|-p_1]P[-p_3|p_2]P[-p_4|p_2]$
+      \\\\
+      $= 0.4 * 0.8 * 0.8 * 0.8 + 0.4 * 0.8 * 0.8 * 0.2 + 0.6 * 0.5 * 0.8 * 0.8 + 0.6 * 0.5 * 0.8 * 0.2 = P[p_2,-p_3]=0.496$
+      \\\\
+      $\xrightarrow[]{} P[p_1|p_2,-p_3] = \frac{0.256}{0.496} \simeq 0.52$
+      \\\\
+      $P[p_2|-p_3] = \frac{P[p_2,-p_3]}{P[-p_3]} = \frac{0.496}{P[-p_3]} \rightarrow P[-p_3] =
+       \sum_{p_1,p_2,p_4}P[p_1,p_2,-p_3,p_4]=P[+p_1]P[+p_2|+p_1]P[-p_3|+p_2] + P[+p_1]P[-p_2|+p_1]P[-p_3|-p_2] + P[-p_1]P[+p_2|-p_1]P[-p_3|+p_2] 
+       + P[-p_1]P[-p_2|-p_1]P[-p_3|-p_2] = 0.4 * 0.8 * 0.8 + 0.4 * 0.2 * 0.7 + 0.6 * 0.5 * 0.8 + 0.6 * 0.5 * 0.7 = P[-p_3] =  0.762$
+       \\\\
+       $\rightarrow P[-p_3] = 0.762$
+       \\\\
+       $\rightarrow P[p_2|-p_3] = \frac{0.496}{0.762} = 0.65$
+    
+    
+    \end{latin}
+    \item \phantom{text}
+    \\
+    \begin{latin}
+      $P[-p_3] = \sum_{p_1,p_2}P[p_1,p_2,-p_3] = \sum_{p_1,p_2}P[p_1]P[p_2|p_1]p[-p_3|p_2] = 
+      \\\\ \sum_{p_2} P[-p_3|p_2] *\sum_{p_1}P[p_1]P[p_2|p_1] $
+      \\\\
+      $\sum_{p_1}P[p_1]P[p_2|p_1] = P[p_2] \rightarrow$
+      \\\\ 
+      $P[+p_1,+p_2] = 0.32 , P[+p_1,-p_2] = 0.08,P[-p_1,+p_2] = 0.30,P[-p_1,-p_2]=0.30$
+      \\\\
+      $\xrightarrow[]{\text{factor out $p_1$}} +p_2 = 0.62,-p_2=0.38$
+      \\\\
+      $\sum_{p_2} P[-p_3|p_2]P[p_2]$
+      \\\\
+      $P[+p_3,+p_2] = 0.124,P[-p_3,+p_2]=0.496,P[+p_3,-p_2]=0.114,P[-p_3,-p_2]=0.266$
+      \\\\
+      $\xrightarrow[]{\text{factor out $p_2$}} P[-p_3] = 0.762,P[+p_3]=0.238$
+      \\\\\\
+      $\rightarrow P[p_2|-p_3] = \frac{P[p_2,-p_3]}{P[-p_3]} = \frac{0.496}{0.762} = 0.65$
+    \end{latin}
+    
+  \end{enumerate}
+
+
+
+
+
