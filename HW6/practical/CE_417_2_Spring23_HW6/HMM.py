@@ -30,13 +30,18 @@ for step in range(1,len(Observed)):
     Cool_obs_C = Observed[step] * Cooler[0][1] + (1 - Observed[step]) * Cooler[0][0]
     Cool_obs_N = Observed[step] * Cooler[1][1] + (1 - Observed[step]) * Cooler[1][0]
     Cool_obs_H = Observed[step] * Cooler[2][1] + (1 - Observed[step]) * Cooler[2][0]
-    C_n = Cool_obs_C * max(prob_list[step][0]*Transition_prob[0][0] , prob_list[step][1]*Transition_prob[1][0] , prob_list[step][2]*Transition_prob[2][0])
-    N_n = Cool_obs_N * max(prob_list[step][0]*Transition_prob[0][1] , prob_list[step][1]*Transition_prob[1][1] , prob_list[step][2]*Transition_prob[2][1])
-    H_n = Cool_obs_H * max(prob_list[step][0]*Transition_prob[0][2] , prob_list[step][1]*Transition_prob[1][2] , prob_list[step][2]*Transition_prob[2][2])
+    # C_n = Cool_obs_C * max(prob_list[step][0]*Transition_prob[0][0] , prob_list[step][1]*Transition_prob[1][0] , prob_list[step][2]*Transition_prob[2][0])
+    # N_n = Cool_obs_N * max(prob_list[step][0]*Transition_prob[0][1] , prob_list[step][1]*Transition_prob[1][1] , prob_list[step][2]*Transition_prob[2][1])
+    # H_n = Cool_obs_H * max(prob_list[step][0]*Transition_prob[0][2] , prob_list[step][1]*Transition_prob[1][2] , prob_list[step][2]*Transition_prob[2][2])
+
+
+    C_n = Cool_obs_C * (prob_list[step][0]*Transition_prob[0][0] + prob_list[step][1]*Transition_prob[1][0] + prob_list[step][2]*Transition_prob[2][0])
+    N_n = Cool_obs_N * (prob_list[step][0]*Transition_prob[0][1] + prob_list[step][1]*Transition_prob[1][1] + prob_list[step][2]*Transition_prob[2][1])
+    H_n = Cool_obs_H * (prob_list[step][0]*Transition_prob[0][2] + prob_list[step][1]*Transition_prob[1][2] + prob_list[step][2]*Transition_prob[2][2])
     prob_list.append([C_n,N_n,H_n])
 
 pro = [prob_list[i]for i in range(1,len(prob_list))]
-print(pro)
+# print(pro[-1][0]/sum(pro[-1]))
 seriez = []
 for prob in pro : 
     max_val = max(prob)
@@ -47,4 +52,7 @@ for prob in pro :
         seriez.append("normal")
     else :
         seriez.append("hot")
-print(seriez)
+print("Most likely sequence of states:")
+print(*seriez)
+print("Probability of states after observing:")
+print([round(t/sum(pro[-1]),3) for t in pro[-1]])
