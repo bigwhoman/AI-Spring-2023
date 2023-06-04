@@ -1,0 +1,29 @@
+\smalltitle{سوال 2}
+\begin{enumerate}
+  \item \phantom{text}
+        \\
+        ابتدا باید ببینیم کدام احتمالات به چه صورت هستند.\\
+        \begin{latin}
+          $P(w_1|Spam) = \frac{5}{6} , P(w_1|Ham) = \frac{1}{4}$\\
+          $P(w_2|Spam) = \frac{4}{6} , P(w_2|Ham) = \frac{1}{4}$\\
+          $P(w_3|Spam) = \frac{1}{6} , P(w_3|Ham) = \frac{3}{4}$\\
+          $P(w_4|Spam) = \frac{2}{6} , P(w_4|Ham) = \frac{3}{4}$\\
+          $P(w_5|Spam) = \frac{6}{6} , P(w_5|Ham) = \frac{2}{4}$\\
+          $P(Spam) = \frac{6}{10}$\\
+          $P(Ham) = \frac{4}{10}$\\
+          $P(Spam|w_1,w_2,w_3,w_4,w_5) = \frac{P(Spam) * \Pi_{i=1}^{5}P(w_i|Spam)}{P(Spam) * \Pi_{i=1}^{5}P(w_i|Spam)+P(Ham) * \Pi_{i=1}^{5}P(w_i|Ham)} = \frac{\frac{1}{54}}{\frac{1}{54}+\frac{9}{1280}} \\
+            = 0.732 \xrightarrow[]{>0.5} Spam$
+        \end{latin}
+  \item \phantom{text}
+        \\
+        \begin{latin}
+          $P(Spam|w_1,w_2,w_3',w_4',w_5') = \frac{\frac{6}{10}*\frac{5}{6}*\frac{4}{6}*\frac{5}{6}*\frac{4}{6}*\frac{0}{6}}{X}=0 \xrightarrow[]{<0.5}Ham$
+        \end{latin}
+        عملا داده آخر کار کلی را خراب کرده است چرا که به دلیل عدم smoothing یک ۰ در کل عبارات ضرب شده که اصلا مطلوب نیست.
+  \item \phantom{text}
+        \\
+        در این حالت فرض می‌کنیم یک عدد از تمامی outcome ها حداقل دیده‌ایم.
+        \begin{latin}
+          $P(Spam|w_1,w_2,w_3',w_4',w_5') = \frac{\frac{11}{20}*\frac{6}{11}*\frac{5}{11}*\frac{9}{11}*\frac{8}{11}*\frac{4}{11}}{\frac{11}{20}*\frac{6}{11}*\frac{5}{11}*\frac{9}{11}*\frac{8}{11}*\frac{4}{11}+\frac{9}{20}*\frac{2}{9}*\frac{2}{9}*\frac{5}{9}*\frac{5}{9}*\frac{6}{9}}=0.865 \xrightarrow[]{>.5}Spam$
+        \end{latin}
+\end{enumerate}

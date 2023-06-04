@@ -1,0 +1,24 @@
+\smalltitle{سوال 3}
+\begin{enumerate}
+  \item \phantom{text}
+        \begin{latin}
+          $\frac{d_{Cost}}{d_{h_\theta(x)}} = -2(y-h_\theta(x)),
+          \\
+          \frac{d(\sigma(z))}{dz} = \frac{e^{-z}}{(1+e^{-z})^2}
+          \\
+          \frac{d(z)}{d(w_i)} = x_i
+          \\
+          \frac{d_{Cost}}{d_{w_i}}=-2(y-\sigma(z))*( \frac{e^{-z}}{(1+e^{-z})^2}) * x_i$
+        \end{latin}
+        حال در هر مرحله باید $w_i$ ها را مطابق فرمول زیر محاسبه کنیم.
+        \\
+        \begin{latin}
+          $w_i = w_i + \eta *2(y-\sigma(z(x)))*( \frac{e^{-z(x)}}{(1+e^{-z(x)})^2}) * x_i$
+        \end{latin}
+        \item \phantom{text}
+        \\
+        ابتدا باید شرط convex بودن تابع بررسی شود که مطمئن باشیم به یک جواب بهینه می‌رسیم.
+        که تابع اول این ویژگی را دارد. 
+        \\
+        دومین علت آن است که در مقایسه با باقی loss function ها،‌ logistic regression عملا بهتر عمل می‌کند چرا که اثبات می‌شود که یک MLE است که یعنی بالاترین استاندارد برای تخمین و بایاس را دارد که یعنی با تقریب خوبی بهترین گزینه ما است.
+\end{enumerate}
